@@ -102,12 +102,9 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 PRODUCT_PACKAGES += \
     build-manifest
 
-# PixelProject packages
+# Charger
 PRODUCT_PACKAGES += \
-    Updater
-
-PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/init/init.custom-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.custom-updater.rc \
+    product_charger_res_images
 
 # Config
 PRODUCT_PACKAGES += \
