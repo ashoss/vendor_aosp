@@ -223,7 +223,8 @@ PRODUCT_PACKAGES += \
     CustomFontPixelLauncherOverlay \
     DocumentsUIOverlay \
     NetworkStackOverlay \
-    ThemedIconsOverlay
+    ThemedIconsOverlay \
+    NavigationBarNoHintOverlay
 
 # TextClassifier
 PRODUCT_PACKAGES += \
