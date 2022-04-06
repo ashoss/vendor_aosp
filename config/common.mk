@@ -235,7 +235,8 @@ PRODUCT_PACKAGE_OVERLAYS += \
 
 # Cutout control overlay
 PRODUCT_PACKAGES += \
-    NoCutoutOverlay
+    NoCutoutOverlay \
+    DummyCutoutOverlay
 
 PRODUCT_PACKAGES += \
     AndroidBlackThemeOverlay \
