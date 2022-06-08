@@ -216,6 +216,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
     vendor/aosp/overlay/common
 
 PRODUCT_PACKAGES += \
+    CustomFontPixelLauncherOverlay \
     DocumentsUIOverlay \
     NetworkStackOverlay \
     ThemedIconsOverlay
