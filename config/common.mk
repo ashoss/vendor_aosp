@@ -141,6 +141,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     build-manifest
 
+# Certification
+$(call inherit-product-if-exists, vendor/certification/config.mk)
+
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images \
