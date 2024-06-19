@@ -39,6 +39,7 @@ SOONG_CONFIG_customGlobalVars += \
     gralloc_handle_has_reserved_size \
     include_miui_camera \
     needs_camera_boottime \
+    gralloc_handle_has_ubwcp_format \
     target_health_charging_control_charging_path \
     target_health_charging_control_charging_enabled \
     target_health_charging_control_charging_disabled \
