@@ -2,7 +2,8 @@
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
 # Google Apps
-$(call inherit-product, vendor/gms/products/gms.mk)
+$(call inherit-product, vendor/google/gms/products/gms.mk)
+
 
 PRODUCT_BRAND ?= ThePixelProject
 
@@ -88,6 +89,13 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
 endif
 
+# BtHelper
+PRODUCT_PACKAGES += \
+    BtHelper
+
+PRODUCT_PACKAGES += \
+    BatteryStatsViewer
+    
 # Enforce privapp-permissions whitelist
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.control_privapp_permissions=enforce
@@ -136,10 +144,6 @@ include vendor/aosp/config/bootanimation.mk
 # BtHelper
 PRODUCT_PACKAGES += \
     BtHelper
-
-# Build Manifest
-PRODUCT_PACKAGES += \
-    build-manifest
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -233,18 +237,31 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
 PRODUCT_PACKAGE_OVERLAYS += \
     vendor/aosp/overlay/common
 
-# Cutout control overlay
-PRODUCT_PACKAGES += \
-    NoCutoutOverlay \
-    DummyCutoutOverlay
-
 PRODUCT_PACKAGES += \
     AndroidBlackThemeOverlay \
-    CustomFontPixelLauncherOverlay \
     DocumentsUIOverlay \
-    NetworkStackOverlay \
-    ThemedIconsOverlay \
-    NavigationBarNoHintOverlay
+    DummyCutoutOverlay \
+    NoCutoutOverlay \
+    AOSPASettingsOverlay 
+
+# SystemUI Customisation
+PRODUCT_PACKAGES += \
+    SystemUICustomOverlay
+
+# Settings Customisation
+PRODUCT_PACKAGES += \
+    SettingsCustomOverlay
+
+# SettingsProvider Customisation
+PRODUCT_PACKAGES += \
+    SettingsProviderOverlay
+
+PRODUCT_PACKAGES += \
+    SystemUIFlagFlipper
+
+# TouchGestures
+PRODUCT_PACKAGES += \
+    TouchGestures
 
 # TextClassifier
 PRODUCT_PACKAGES += \
@@ -259,6 +276,9 @@ CUSTOM_LOCALES += \
     gd_GB \
     cy_GB \
     fur_IT
+
+# Vendor configurations
+$(call inherit-product, vendor/custom/config.mk)
 
 include vendor/aosp/config/version.mk
 
