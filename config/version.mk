@@ -1,15 +1,21 @@
-CUSTOM_DATE_YEAR := $(shell date -u +%Y)
-CUSTOM_DATE_MONTH := $(shell date -u +%m)
-CUSTOM_DATE_DAY := $(shell date -u +%d)
-CUSTOM_DATE_HOUR := $(shell date -u +%H)
-CUSTOM_DATE_MINUTE := $(shell date -u +%M)
-CUSTOM_BUILD_DATE_UTC := $(shell date -d '$(CUSTOM_DATE_YEAR)-$(CUSTOM_DATE_MONTH)-$(CUSTOM_DATE_DAY) $(CUSTOM_DATE_HOUR):$(CUSTOM_DATE_MINUTE) UTC' +%s)
-CUSTOM_BUILD_DATE := $(CUSTOM_DATE_YEAR)$(CUSTOM_DATE_MONTH)$(CUSTOM_DATE_DAY)-$(CUSTOM_DATE_HOUR)$(CUSTOM_DATE_MINUTE)
-
 CUSTOM_PLATFORM_VERSION := 14.0
 
-CUSTOM_VERSION := PixelProject_$(CUSTOM_BUILD)-$(CUSTOM_PLATFORM_VERSION)-$(CUSTOM_BUILD_DATE)
+BUILD_DATE := $(shell date -u +%Y%m%d)
+BUILD_TIME := $(shell date -u +%H%M)
+CUSTOM_VERSION := PixelProject_$(CUSTOM_BUILD)-$(CUSTOM_BUILD_TYPE)-$(CUSTOM_PLATFORM_VERSION)-$(BUILD_TIME)-$(BUILD_DATE)
 CUSTOM_VERSION_PROP := fourteen
+
+
+CUSTOM_BUILD_TYPE ?= Unofficial
+
+# Only include Updater for official  build
+ifeq ($(filter-out Official,$(CUSTOM_BUILD_TYPE)),)
+    PRODUCT_PACKAGES += \
+        Updater
+
+PRODUCT_COPY_FILES += \
+    vendor/aosp/prebuilt/common/etc/init/init.tpp-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.tpp-updater.rc
+endif
 
 # Signing
 ifneq (eng,$(TARGET_BUILD_VARIANT))
