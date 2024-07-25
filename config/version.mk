@@ -1,4 +1,4 @@
-CUSTOM_PLATFORM_VERSION := 14.0
+CUSTOM_PLATFORM_VERSION := 1.0
 
 BUILD_DATE := $(shell date -u +%Y%m%d)
 BUILD_TIME := $(shell date -u +%H%M)
