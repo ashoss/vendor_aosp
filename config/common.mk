@@ -287,6 +287,9 @@ $(call inherit-product, vendor/custom/config.mk)
 # Optimisation
 $(call inherit-product, vendor/aosp/config/common/optimisation.mk)
 
+# Certification
+$(call inherit-product-if-exists, vendor/certification/config.mk)
+
 include vendor/aosp/config/version.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
