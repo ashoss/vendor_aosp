@@ -40,7 +40,6 @@ if [ -f $existingOTAjson ]; then
         md5=`md5sum "$2/$3" | cut -d' ' -f1`
         sha256=`sha256sum "$2/$3" | cut -d' ' -f1`
         size=`stat -c "%s" "$2/$3"`
-        buildtype=`grep -n "\"buildtype\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
         forum=`grep -n "\"forum\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
         if [ ! -z "$forum" ]; then
                 forum="https:"$forum
@@ -64,7 +63,6 @@ if [ -f $existingOTAjson ]; then
                         "md5": "'$md5'",
                         "sha256": "'$sha256'",
                         "size": '$size',
-                        "buildtype": "'$buildtype'",
                         "forum": "'$forum'",
                         "telegram": "'$telegram'"
                 }
@@ -93,7 +91,6 @@ else
                         "md5": "'$md5'",
                         "sha256": "'$sha256'",
                         "size": '$size',
-                        "buildtype": "''",
                         "forum": "''",
                         "telegram": "''"
                 }
