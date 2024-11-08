@@ -1,12 +1,12 @@
-CUSTOM_PLATFORM_VERSION := 1.2
+CUSTOM_PLATFORM_VERSION := 1.3
 
 BUILD_DATE := $(shell date -u +%Y%m%d)
 BUILD_TIME := $(shell date -u +%H%M)
-CUSTOM_VERSION := PixelProject_$(CUSTOM_BUILD)-$(CUSTOM_BUILD_TYPE)-$(CUSTOM_PLATFORM_VERSION)-$(BUILD_TIME)-$(BUILD_DATE)
-CUSTOM_VERSION_PROP := fourteen
-
 
 CUSTOM_BUILD_TYPE ?= Unofficial
+
+CUSTOM_VERSION := PixelProject_$(CUSTOM_BUILD)-$(CUSTOM_BUILD_TYPE)-$(CUSTOM_PLATFORM_VERSION)-$(BUILD_TIME)-$(BUILD_DATE)
+CUSTOM_VERSION_PROP := fourteen
 
 # Only include Updater for official  build
 ifeq ($(filter-out Official,$(CUSTOM_BUILD_TYPE)),)
